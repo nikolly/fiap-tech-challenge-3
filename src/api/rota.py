@@ -13,7 +13,10 @@ def create_data():
     """
     RESTful endpoint to train the machine learning model.
     """
-    train_machine_learning_model()
+    try:
+        train_machine_learning_model()
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500  # 500 Internal Server Error
 
 
 # POST /api/predictions
