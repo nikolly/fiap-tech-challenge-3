@@ -1,8 +1,10 @@
 from flask import Flask, request, Blueprint, jsonify
 from src.core.train_model import train_machine_learning_model
+from flask_cors import CORS
 import pickle
 import os
 import pandas as pd
+
 
 
 colunas = ['temp_max', 'temp_afternoon']
@@ -10,6 +12,7 @@ modelo_path = 'modelo/modelo_regressao_linear.pkl'
 modelo = pickle.load(open(modelo_path,'rb')) if os.path.exists(modelo_path) else None
 
 app = Flask(__name__)
+CORS(app)
 api_bp = Blueprint('api', __name__, url_prefix='/api')
 
 
