@@ -34,7 +34,7 @@
 
                 // Requisição POST para o endpoint de previsão
                 $.ajax({
-                    url: '/api/prediction',
+                    url: 'http://127.0.0.1:5000/api/prediction',
                     type: 'POST',
                     contentType: 'application/json',
                     data: JSON.stringify({ temp_max: tempMax, temp_afternoon: tempAfternoon }),
