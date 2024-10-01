@@ -1,4 +1,4 @@
-from botocore.exceptions import NoCredentialsError
+from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 import boto3
 import os
 import pandas as pd
@@ -47,6 +47,8 @@ def download_data_from_s3(bucket_name, s3_folder, local_dir):
     
     except NoCredentialsError:
         print("Credentials not available")
+    except PartialCredentialsError:
+        print("Incomplete credentials provided")
     except Exception as e:
         print(f"An error occurred: {e}")
 
